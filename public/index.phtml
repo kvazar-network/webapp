@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/app.css" />
+  <meta charset="UTF-8" />
+  <meta name="description" content="Open Source Content Exploring Platform for Kevacoin Blockchain" />
+  <base href="<?php echo BASE_URL; ?>" />
+  <?php if ($ns) { ?>
+  <?php if ($page) { ?>
+  <title>KVAZAR - NS - <?php echo $namespaceValue ? $namespaceValue : $ns; ?> - PART <?php echo $page; ?></title>
+  <?php } else { ?>
+  <title>KVAZAR - NS - <?php echo $namespaceValue ? $namespaceValue : $ns; ?></title>
+  <?php } ?>
+  <?php } else { ?>
+  <?php if ($page) { ?>
+  <title>KVAZAR - PART <?php echo $page; ?></title>
+  <?php } else { ?>
+  <title>KVAZAR - Observe Kevacoin Universe</title>
+  <?php } ?>
+  <?php } ?>
+</head>
+<body>
+  <div class="t-center px-16 pt-54">
+    <div class="mx-a mw-560 px-16">
+      <div class="mb-20">
+        <a class="logo f-s-20 c-0" href="/">KVAZAR</a>
+      </div>
+      <?php if ($ns) { ?>
+        <div class="mx-a mw-560 px-16 pb-16">
+          <img class="br-50 shine" src="image.php?hash=<?php echo $ns; ?>" alt="<?php echo $ns; ?>" />
+        </div>
+      <?php } ?>
+      <div class="mb-36 c-1"><?php echo $namespaceValue ? $namespaceValue : 'Observe Kevacoin Universe'; ?></div>
+    </div>
+  </div>
+  <div class="t-center px-16 pb-36">
+    <div class="b-g"></div>
+  </div>
+  <?php foreach ($data as $item) { ?>
+    <div class="t-center px-16">
+      <div class="mx-a mw-560 px-16">
+        <?php if (!$ns) { ?>
+          <div class="mx-a mw-560 mb-16">
+            <?php if (SEF_MODE) { ?>
+              <a href="<?php echo $item['namehash']; ?>">
+                <img class="br-50" src="image.php?hash=<?php echo $item['namehash']; ?>" alt="<?php echo $item['namehash']; ?>" />
+              </a>
+            <?php } else { ?>
+              <a href="?ns=<?php echo $item['namehash']; ?>">
+                <img class="br-50" src="image.php?hash=<?php echo $item['namehash']; ?>" alt="<?php echo $item['namehash']; ?>" />
+              </a>
+            <?php } ?>
+          </div>
+        <?php } ?>
+        <?php if (!$tx) { ?>
+        <a class="d-block" href="<?php echo (SEF_MODE ? $item['txid'] : '?tx=' . $item['txid']); ?>">
+        <?php } ?>
+          <div class="f-s-16 mb-16 of-a">
+            <?php echo $item['key']; ?>
+          </div>
+          <div class="mb-20 of-a"><?php echo $item['value']; ?></div>
+          <div class="f-s-12">
+            <?php echo $item['time']; ?> in <?php echo $item['block']; ?>
+          </div>
+        <?php if (!$tx) { ?>
+        </a>
+        <?php } ?>
+      </div>
+    </div>
+    <div class="t-center px-16 py-27">
+      <div class="b-g"></div>
+    </div>
+  <?php } ?>
+  <?php if (!$tx && ($newer !== false || $older !== false)) { ?>
+    <div class="t-center pt-16 pb-27">
+      <?php if ($newer !== false) { ?>
+      <a href="<?php echo $newer; ?>">newer</a>
+      <?php } ?>
+      <?php if ($newer !== false && $older !== false) { ?>
+      |
+      <?php } ?>
+      <?php if ($older !== false) { ?>
+      <a href="<?php echo $older; ?>">older</a>
+      <?php } ?>
+    </div>
+  <?php } ?>
+  <div class="t-center px-16 pb-27">
+    <form name="namespace" action="/" method="GET">
+      <input class="p-8" type="text" name="q" value="" placeholder="key, value, block, ns, txid" autocomplete="off" />
+      <button class="p-8 cursor-pointer" type="submit">Search</button>
+    </form>
+  </div>
+  <div class="t-center px-16 pb-27">
+    <div class="pb-16 f-s-12 c-1"><a href="https://github.com/kvazar-network/webapp">KVAZAR Webapp</a> is the content exploring platform for <a href="https://kevacoin.org">Kevacoin Blockchain</a>.</div>
+    <div class="f-s-12 c-1">Sources distributed under the MIT License. Ownership of all content belongs to the authors.</div>
+  </div>
+</body>
+</html>
