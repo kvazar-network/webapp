@@ -4,7 +4,7 @@ require_once('../config.php');
 require_once('../library/icon.php');
 require_once('../library/mysql.php');
 
-$query = isset($_GET['q']) && mb_strlen($_GET['q']) > 2 ? $_GET['q'] : false;
+$query = isset($_GET['q'])  ? $_GET['q'] : false;
 $ns    = isset($_GET['ns']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['ns']) : false;
 $tx    = isset($_GET['tx']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['tx']) : false;
 $page  = (int) isset($_GET['page']) ? $_GET['page'] : 0;
@@ -82,17 +82,17 @@ if (SEF_MODE) {
     $newer = false;
   } else {
     if ($page == 2) {
-      $newer = ($ns ? '?ns=' . $ns : '');
+      $newer = ($ns ? '?ns=' . $ns : ($query ? '?q=' . $query : ''));
     } else {
-      $newer = ($ns ? '?ns=' . $ns . '&page=' . ($page - 1) : '?page=' . ($page - 1));
+      $newer = ($ns ? '?ns=' . $ns . '&page=' . ($page - 1) : '?page=' . ($page - 1) . ($query ? '&q=' . $query : ''));
     }
   }
 
   if ($data) {
     if (in_array($page, [0, 1])) {
-      $older = ($ns ? '?ns=' . $ns . '&page=2' : '?page=2');
+      $older = ($ns ? '?ns=' . $ns . '&page=2' : '?page=2' . ($query ? '&q=' . $query : ''));
     } else {
-      $older = ($ns ? '?ns=' . $ns . '&page=' . ($page + 1) : '?page=' . ($page + 1));
+      $older = ($ns ? '?ns=' . $ns . '&page=' . ($page + 1) : '?page=' . ($page + 1) . ($query ? '&q=' . $query : ''));
     }
   } else {
     $older = false;

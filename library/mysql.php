@@ -116,7 +116,9 @@ class MySQL {
                                                AND  `data`.`ns`      = "0"
                                                AND  `data`.`deleted` = "0"
 
-                                             ORDER BY `block`.`blockId` DESC');
+                                             ORDER BY `block`.`blockId` DESC
+
+                                             LIMIT ' . (int) $start . ',' . (int) $limit);
 
         $query->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
 
