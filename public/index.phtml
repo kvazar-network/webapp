@@ -7,15 +7,17 @@
   <base href="<?php echo BASE_URL; ?>" />
   <?php if ($ns) { ?>
   <?php if ($page) { ?>
-  <title>KVAZAR - NS - <?php echo $namespaceValue ? $namespaceValue : $ns; ?> - PART <?php echo $page; ?></title>
+  <title><?php echo $namespaceValue ? $namespaceValue : $ns; ?> | PART <?php echo $page; ?> | KVAZAR</title>
   <?php } else { ?>
-  <title>KVAZAR - NS - <?php echo $namespaceValue ? $namespaceValue : $ns; ?></title>
+  <title><?php echo $namespaceValue ? $namespaceValue : $ns; ?> | KVAZAR</title>
   <?php } ?>
   <?php } else { ?>
   <?php if ($page) { ?>
-  <title>KVAZAR - PART <?php echo $page; ?></title>
+  <title>KVAZAR | PART <?php echo $page; ?></title>
+  <?php } else if ($tx) { ?>
+  <title><?php echo $tx && isset($data[0]['key']) ? $data[0]['key'] : $tx; ?> | KVAZAR</title>
   <?php } else { ?>
-  <title>KVAZAR - Observe Kevacoin Universe</title>
+  <title>KVAZAR | Observe Kevacoin Universe</title>
   <?php } ?>
   <?php } ?>
 </head>
