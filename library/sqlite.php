@@ -35,7 +35,9 @@ class SQLite {
 
       $query->execute([$namehash]);
 
-      return $query->rowCount() ? $query->fetch()['value'] : [];
+      $result = $query->fetch();
+
+      return $result ? $result['value'] : false;
 
     } catch(PDOException $e) {
 
@@ -147,8 +149,9 @@ class SQLite {
         $query->execute();
       }
 
+      $result = $query->fetchAll();
 
-      return $query->rowCount() ? $query->fetchAll() : [];
+      return $result ? $result : [];
 
     } catch(PDOException $e) {
 
