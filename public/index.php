@@ -32,7 +32,7 @@ if (SEF_MODE && isset($_SERVER['QUERY_STRING'])) {
   }
 }
 
-if ($page > 1) {
+if ($page > 0) {
   $limit = PAGE_LIMIT * $page - PAGE_LIMIT;
 } else {
   $limit = PAGE_LIMIT * $page;
