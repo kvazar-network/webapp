@@ -53,8 +53,8 @@ foreach ($db->getData($ns, $tx, $query, $limit, PAGE_LIMIT) as $value) {
     'block'    => $value['block'],
     'txid'     => $value['txid'],
     'time'     => date('d-m-Y H:i', $value['time']),
-    'key'      => nl2br($value['key']),
-    'value'    => nl2br($value['value']),
+    'key'      => nl2br(trim($value['key'])),
+    'value'    => nl2br(trim($value['value'])),
   ];
 }
 
