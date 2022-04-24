@@ -14,7 +14,7 @@ php-gd
 
 https://github.com/kvazar-network/database
 
-### nginx sef mode
+### nginx sef_mode example
 
 ```
 location / {
