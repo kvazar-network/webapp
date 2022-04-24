@@ -17,13 +17,13 @@ https://github.com/kvazar-network/database
 ### nginx sef mode
 
 ```
-	location / {
-		try_files $uri $uri/ =404 @sef;
-	}
+location / {
+  try_files $uri $uri/ =404 @sef;
+}
 
-	location @sef {
-		rewrite ^(/.*)$ /?$1 last;
-	}
+location @sef {
+  rewrite ^(/.*)$ /?$1 last;
+}
 ```
 
 ### webapp example
