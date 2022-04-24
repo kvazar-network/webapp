@@ -2,4 +2,4 @@
 Web-oriented content exploring platform for Kevacoin Blockchain   
 
 ### demo
-https://kvazar.ml
+https://kvazar.today
