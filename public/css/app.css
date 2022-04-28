@@ -95,19 +95,21 @@ img:hover {
 }
 
 .b-g::before {
-    content: "";
-    background-image: linear-gradient(to left, #9B94BF, #18102d);
-    height: 1px;
-    width: 360px;
-    display: inline-block;
+  content: "";
+  background-image: linear-gradient(to left, #9B94BF, #18102d);
+  height: 1px;
+  width: 50%;
+  max-width: 360px;
+  display: inline-block;
 }
 
 .b-g::after {
-    content: "";
-    background-image: linear-gradient(to right, #9B94BF, #18102d);
-    height: 1px;
-    width: 360px;
-    display: inline-block;
+  content: "";
+  background-image: linear-gradient(to right, #9B94BF, #18102d);
+  height: 1px;
+  width: 50%;
+  max-width: 360px;
+  display: inline-block;
 }
 
 .br-50 {
