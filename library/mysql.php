@@ -27,7 +27,7 @@ class MySQL {
 
                                            WHERE `namespace`.`hash` = ?
                                              AND `data`.`ns`        = "1"
-                                             AND `data`.`deleted`   = "0"
+                                             -- AND `data`.`deleted`   = "0" --
 
                                            ORDER BY `data`.`blockId` DESC
 
@@ -63,7 +63,7 @@ class MySQL {
 
                                              WHERE `data`.`txid`    = ?
                                                AND `data`.`ns`      = "0"
-                                               AND `data`.`deleted` = "0"
+                                               -- AND `data`.`deleted` = "0" --
 
                                              ORDER BY `block`.`blockId` DESC
 
@@ -86,7 +86,7 @@ class MySQL {
 
                                              WHERE `namespace`.`hash` = ?
                                                AND `data`.`ns`        = "0"
-                                               AND `data`.`deleted`   = "0"
+                                               -- AND `data`.`deleted`   = "0" --
 
                                              ORDER BY `block`.`blockId` DESC
 
@@ -114,7 +114,7 @@ class MySQL {
                                                 OR  `data`.`txid`      LIKE :search)
 
                                                AND  `data`.`ns`      = "0"
-                                               AND  `data`.`deleted` = "0"
+                                               -- AND  `data`.`deleted` = "0" --
 
                                              ORDER BY `block`.`blockId` DESC
 
@@ -138,7 +138,7 @@ class MySQL {
                                              JOIN `namespace` ON (`namespace`.`nameSpaceId` = `data`.`nameSpaceId`)
 
                                              WHERE `data`.`ns`      = "0"
-                                               AND `data`.`deleted` = "0"
+                                               -- AND `data`.`deleted` = "0" --
 
                                              ORDER BY `block`.`blockId` DESC
 
