@@ -14,6 +14,12 @@ php-gd
 
 https://github.com/kvazar-network/database
 
+#### crontab
+
+```
+0 0 * * * /path-to/php /path-to/crontab/sitemap.php > /dev/null 2>&1
+```
+
 ### nginx sef_mode example
 
 ```
