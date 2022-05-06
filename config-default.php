@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 define('BASE_URL', 'https://kvazar.today');
 define('PAGE_LIMIT', 10);
 define('SEF_MODE', true);
+define('CACHE_ENABLED', false);
 
 // Database
 define('DB_HOST', 'localhost');
