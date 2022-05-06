@@ -8,12 +8,14 @@
   <?php if ($ns) { ?>
   <?php if ($page) { ?>
   <title><?php echo $namespaceValue ? $namespaceValue : $ns; ?> | PART <?php echo $page; ?> | KVAZAR</title>
+  <meta name="robots" content="noindex,follow" />
   <?php } else { ?>
   <title><?php echo $namespaceValue ? $namespaceValue : $ns; ?> | KVAZAR</title>
   <?php } ?>
   <?php } else { ?>
   <?php if ($page) { ?>
   <title>KVAZAR | PART <?php echo $page; ?></title>
+  <meta name="robots" content="noindex,follow" />
   <?php } else if ($tx) { ?>
   <title><?php echo $tx && isset($data[0]['key']) ? $data[0]['key'] : $tx; ?> | KVAZAR</title>
   <?php } else { ?>
@@ -76,13 +78,13 @@
   <?php if (!$tx && ($newer !== false || $older !== false)) { ?>
     <div class="t-center pt-16 pb-27">
       <?php if ($newer !== false) { ?>
-      <a href="<?php echo $newer; ?>">newer</a>
+      <a href="<?php echo $newer; ?>"<?php echo $newer ? ' rel="nofollow"' : false; ?>>newer</a>
       <?php } ?>
       <?php if ($newer !== false && $older !== false) { ?>
       |
       <?php } ?>
       <?php if ($older !== false) { ?>
-      <a href="<?php echo $older; ?>">older</a>
+      <a href="<?php echo $older; ?>"<?php echo $older ? ' rel="nofollow"' : false; ?>>older</a>
       <?php } ?>
     </div>
   <?php } ?>
