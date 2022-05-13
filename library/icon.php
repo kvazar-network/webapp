@@ -10,7 +10,7 @@ final class Icon {
 
   private $_spriteZ = 800;
 
-  public function generateImageResource($hash, $width, $height, $filter = false) {
+  public function generateImageResource($hash, $width, $height, $filter = false, $radius = 0) {
 
     $this->_width  = $width;
     $this->_height = $height;
@@ -74,10 +74,23 @@ final class Icon {
 
     imagecopyresampled($resized, $identicon, 0, 0, (imagesx($identicon) - $this->_spriteZ * 3) / 2, (imagesx($identicon) - $this->_spriteZ * 3) / 2, $this->_width, $this->_height, $this->_spriteZ * 3, $this->_spriteZ * 3);
 
-    imagecolortransparent($resized, $bg);
-
     if ($filter) {
+
       imagefilter($resized, $filter);
+    }
+
+    if ($radius) {
+
+      imagearc($resized, $radius-1, $radius-1, $radius*2, $radius*2, 180, 270, $bg);
+      imagefilltoborder($resized, 0, 0, $bg, $bg);
+      imagearc($resized, $width-$radius, $radius-1, $radius*2, $radius*2, 270, 0, $bg);
+      imagefilltoborder($resized, $width-1, 0, $bg, $bg);
+      imagearc($resized, $radius-1, $height-$radius, $radius*2, $radius*2, 90, 180, $bg);
+      imagefilltoborder($resized, 0, $height-1, $bg, $bg);
+      imagearc($resized, $width-$radius, $height-$radius, $radius*2, $radius*2, 0, 90, $bg);
+      imagefilltoborder($resized, $width-1, $height-1, $bg, $bg);
+
+      imagecolortransparent($resized, $bg);
     }
 
     ob_start();
