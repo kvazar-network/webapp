@@ -81,7 +81,7 @@ final class Icon {
     }
 
     ob_start();
-    imagejpeg($resized, null, 100);
+    imagepng($resized);
     imagedestroy($resized);
     return ob_get_clean();
   }

@@ -5,11 +5,11 @@ require_once('../library/icon.php');
 
 if (isset($_GET['hash'])) {
 
-  header("Content-Type: image/jpeg");
+  header("Content-Type: image/png");
 
   if (CACHE_ENABLED) {
 
-    $filename = dirname(__FILE__) . '/../cache/' . $_GET['hash'] . '.jpeg';
+    $filename = dirname(__FILE__) . '/../cache/' . $_GET['hash'] . '.png';
 
     if (!file_exists($filename)) {
 
