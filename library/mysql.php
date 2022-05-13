@@ -16,7 +16,7 @@ class MySQL {
     }
   }
 
-  public function getNamespaceName($namehash) {
+  public function getNamespaceValueByNS($ns) {
 
     try {
 
@@ -33,9 +33,31 @@ class MySQL {
 
                                            LIMIT 1');
 
-      $query->execute([$namehash]);
+      $query->execute([$ns]);
 
       return $query->rowCount() ? $query->fetch()['value'] : [];
+
+    } catch(PDOException $e) {
+
+      trigger_error($e->getMessage());
+      return false;
+    }
+  }
+
+  public function getNamespaceHashByTX($txid) {
+
+    try {
+
+      $query = $this->_db->prepare('SELECT `namespace`.`hash`
+
+                                           FROM `namespace`
+                                           JOIN `data` ON (`data`.`nameSpaceId` = `namespace`.`nameSpaceId`)
+
+                                           WHERE `data`.`txid` = ?');
+
+      $query->execute([$txid]);
+
+      return $query->rowCount() ? $query->fetch()['hash'] : [];
 
     } catch(PDOException $e) {
 

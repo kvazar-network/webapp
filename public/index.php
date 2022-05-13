@@ -41,8 +41,18 @@ if ($page > 0) {
 $db = new MySQL();
 
 if ($ns) {
-  $namespaceValue = $db->getNamespaceName($ns);
+
+  $namespaceHash  = $ns;
+  $namespaceValue = $db->getNamespaceValueByNS($ns);
+
+} else if ($tx) {
+
+  $namespaceHash  = $db->getNamespaceHashByTX($tx);
+  $namespaceValue = $db->getNamespaceValueByNS($namespaceHash);
+
 } else {
+
+  $namespaceHash  = false;
   $namespaceValue = false;
 }
 
