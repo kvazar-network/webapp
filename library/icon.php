@@ -83,12 +83,12 @@ final class Icon {
 
       imagearc($resized, $radius-1, $radius-1, $radius*2, $radius*2, 180, 270, $bg);
       imagefilltoborder($resized, 0, 0, $bg, $bg);
-      imagearc($resized, $width-$radius, $radius-1, $radius*2, $radius*2, 270, 0, $bg);
-      imagefilltoborder($resized, $width-1, 0, $bg, $bg);
-      imagearc($resized, $radius-1, $height-$radius, $radius*2, $radius*2, 90, 180, $bg);
-      imagefilltoborder($resized, 0, $height-1, $bg, $bg);
-      imagearc($resized, $width-$radius, $height-$radius, $radius*2, $radius*2, 0, 90, $bg);
-      imagefilltoborder($resized, $width-1, $height-1, $bg, $bg);
+      imagearc($resized, $this->_width-$radius, $radius-1, $radius*2, $radius*2, 270, 0, $bg);
+      imagefilltoborder($resized, $this->_width-1, 0, $bg, $bg);
+      imagearc($resized, $radius-1, $this->_height-$radius, $radius*2, $radius*2, 90, 180, $bg);
+      imagefilltoborder($resized, 0, $this->_height-1, $bg, $bg);
+      imagearc($resized, $this->_width-$radius, $this->_height-$radius, $radius*2, $radius*2, 0, 90, $bg);
+      imagefilltoborder($resized, $this->_width-1, $this->_height-1, $bg, $bg);
 
       imagecolortransparent($resized, $bg);
     }
