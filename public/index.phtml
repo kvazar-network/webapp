@@ -7,8 +7,6 @@
   <base href="<?php echo BASE_URL; ?>" />
   <?php if ($namespaceHash) { ?>
     <link rel="icon" type="image/png" href="image.php?hash=<?php echo $namespaceHash; ?>&radius=30" />
-  <?php } else { ?>
-    <link rel="icon" type="image/png" href="image.php?hash=<?php echo md5(date('dmY')); ?>&radius=30" />
   <?php } ?>
   <?php if ($ns) { ?>
     <?php if ($page) { ?>
