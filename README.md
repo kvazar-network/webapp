@@ -36,4 +36,4 @@ location @sef {
 https://kvazar.today
 
 ### yggdrasil
-[http://[200:4f97:7cc6:fdd5:1508:5dcc:d8a3:88c5]http://[200:4f97:7cc6:fdd5:1508:5dcc:d8a3:88c5]http://[200:4f97:7cc6:fdd5:1508:5dcc:d8a3:88c5]](http://[200:4f97:7cc6:fdd5:1508:5dcc:d8a3:88c5])
+[http://[200:4f97:7cc6:fdd5:1508:5dcc:d8a3:88c5]](http://[200:4f97:7cc6:fdd5:1508:5dcc:d8a3:88c5])
