@@ -3,10 +3,10 @@ Web-oriented content exploring platform for Kevacoin Blockchain
 
 ### requirements
 ```
-php-7.4
+php-8^
 php-curl
 php-mbstring
-php-sqlite
+php-sqlite3
 php-pdo
 php-bcmath
 php-gd
