@@ -3,9 +3,9 @@
 <channel>
   <atom:link href="<?php echo BASE_URL; ?><?php echo ($ns ? $ns . '/rss' :
                                                            ($query ? '?q=' . $query . '&amp;rss' : 'rss')); ?>" rel="self" type="application/rss+xml"></atom:link>
-  <title><?php echo ($namespaceValue ? $namespaceValue :
-                                      ($namespaceHash ? $namespaceHash :
-                                                        ($query ? $query : 'KVAZAR'))); ?></title>
+  <title>KVAZAR - <?php echo ($namespaceValue ? $namespaceValue :
+                                               ($namespaceHash ? $namespaceHash :
+                                                                ($query ? 'SEARCH - ' . $query : 'TODAY'))); ?></title>
   <description>Observe Kevacoin Universe</description>
   <link><?php echo BASE_URL; ?><?php echo ($ns ? $ns : ($query ? '?q=' . $query : false)); ?></link>
   <?php foreach ($data as $item) { ?>
