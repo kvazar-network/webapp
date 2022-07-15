@@ -2,6 +2,8 @@
 
 class SQLite {
 
+  private _$db;
+
   public function __construct($database, $username, $password) {
 
     try {
