@@ -1,9 +1,9 @@
 <?php
 
 require_once(dirname(__FILE__) . '/../config.php');
-require_once(dirname(__FILE__) . '/../library/mysql.php');
+require_once(dirname(__FILE__) . '/../library/sqlite.php');
 
-$db = new MySQL();
+$db = new SQLite(DB_NAME, DB_USERNAME, DB_PASSWORD);
 
 // Generate url sets
 $transaction  = '<?xml version="1.0" encoding="UTF-8"?>';
