@@ -12,6 +12,6 @@ define('SEF_MODE', true);
 define('CACHE_ENABLED', false);
 
 // Database
-define('DB_NAME', 'kvazar.dat');
+define('DB_NAME', 'kvazar.sqlite');
 define('DB_USERNAME', '');
 define('DB_PASSWORD', '');
