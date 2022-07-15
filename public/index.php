@@ -83,9 +83,9 @@ if (SEF_MODE) {
 
   if ($data) {
     if (in_array($page, [0, 1])) {
-      $older = ($ns ? $ns . '/2' : '/2');
+      $older = ($ns ? $ns . '/2' : '2');
     } else {
-      $older = ($ns ? $ns . '/' . ($page + 1) : '/' . ($page + 1));
+      $older = ($ns ? $ns . '/' . ($page + 1) : ($page + 1));
     }
   } else {
     $older = false;
