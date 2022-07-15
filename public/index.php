@@ -15,7 +15,9 @@ if (SEF_MODE && isset($_SERVER['QUERY_STRING'])) {
   $q = explode('/', $_SERVER['QUERY_STRING']);
 
   if (isset($q[1])) {
-    if (strlen($q[1]) == 34) {
+    if ($q[1] == 'rss') {
+      $rss = true;
+    } else if (strlen($q[1]) == 34) {
       $ns = preg_replace('/[^a-zA-Z0-9]+/', '', $q[1]);
     } else if (strlen($q[1]) > 34) {
       $tx = preg_replace('/[^a-zA-Z0-9]+/', '', $q[1]);
@@ -25,7 +27,9 @@ if (SEF_MODE && isset($_SERVER['QUERY_STRING'])) {
   }
 
   if (isset($q[2])) {
-    if (strlen($q[2]) == 34) {
+    if ($q[2] == 'rss') {
+      $rss = true;
+    } else if (strlen($q[2]) == 34) {
       $ns = preg_replace('/[^a-zA-Z0-9]+/', '', $q[2]);
     } else {
       $page = (int) $q[2];
