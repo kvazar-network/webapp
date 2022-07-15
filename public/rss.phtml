@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <atom:link href="<?php echo BASE_URL; ?>/?rss" rel="self" type="application/rss+xml" />
+    <atom:link href="<?php echo BASE_URL; ?>?rss" rel="self" type="application/rss+xml" />
     <title><?php echo $namespaceValue ? $namespaceValue : 'KVAZAR'; ?></title>
     <description>Observe Kevacoin Universe</description>
     <?php foreach ($data as $item) { ?>
     <item>
       <title><?php echo $item['key']; ?></title>
-      <guid><?php echo BASE_URL; ?>/<?php echo $item['txid']; ?></guid>
+      <guid><?php echo BASE_URL; ?><?php echo $item['txid']; ?></guid>
       <pubDate><?php echo $item['time']; ?></pubDate>
       <description><?php echo $item['value']; ?></description>
     </item>
