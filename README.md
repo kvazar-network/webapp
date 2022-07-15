@@ -7,7 +7,6 @@ php-7.4
 php-curl
 php-mbstring
 php-mysql
-php-sqlite
 php-pdo
 php-bcmath
 php-gd
