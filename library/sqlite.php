@@ -13,6 +13,54 @@ class SQLite {
       $this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
       $this->_db->setAttribute(PDO::ATTR_TIMEOUT, 600);
 
+      $this->_db->query('
+        CREATE TABLE IF NOT EXISTS "namespace"(
+          "nameSpaceId" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL CHECK("nameSpaceId">=0),
+          "timeIndexed" INTEGER NOT NULL CHECK("timeIndexed">=0),
+          "hash" CHAR(34) NOT NULL,
+          CONSTRAINT "hash_UNIQUE"
+            UNIQUE("hash")
+        )
+      ');
+
+      $this->_db->query('
+        CREATE TABLE IF NOT EXISTS "block"(
+          "blockId" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL CHECK("blockId">=0),
+          "timeIndexed" INTEGER NOT NULL CHECK("timeIndexed">=0),
+          "lostTransactions" INTEGER NOT NULL CHECK("lostTransactions">=0)
+        )
+      ');
+
+      $this->_db->query('
+        CREATE TABLE IF NOT EXISTS "data"(
+          "dataId" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL CHECK("dataId">=0),
+          "nameSpaceId" INTEGER NOT NULL CHECK("nameSpaceId">=0),
+          "blockId" INTEGER NOT NULL CHECK("blockId">=0),
+          "time" INTEGER NOT NULL CHECK("time">=0),
+          "timeIndexed" INTEGER NOT NULL CHECK("timeIndexed">=0),
+          "size" INTEGER NOT NULL,
+          "ns" TEXT NOT NULL CHECK("ns" IN(\'0\', \'1\')),
+          "deleted" TEXT NOT NULL CHECK("deleted" IN(\'0\', \'1\')),
+          "txid" CHAR(64) NOT NULL,
+          "key" TEXT NOT NULL,
+          "value" TEXT NOT NULL,
+          CONSTRAINT "txid_UNIQUE"
+            UNIQUE("txid"),
+          CONSTRAINT "fk_data_namespace"
+            FOREIGN KEY("nameSpaceId")
+            REFERENCES "namespace"("nameSpaceId"),
+          CONSTRAINT "fk_data_block"
+            FOREIGN KEY("blockId")
+            REFERENCES "block"("blockId")
+        )
+
+      ');
+
+      $this->_db->query('CREATE INDEX IF NOT EXISTS "data.fk_data_namespase_idx" ON "data" ("nameSpaceId")');
+      $this->_db->query('CREATE INDEX IF NOT EXISTS "data.fk_data_block_idx" ON "data" ("blockId")');
+      $this->_db->query('CREATE INDEX IF NOT EXISTS "data.deleted_INDEX" ON "data" ("deleted")');
+      $this->_db->query('CREATE INDEX IF NOT EXISTS "data.ns_INDEX" ON "data" ("ns")');
+
     } catch(PDOException $e) {
       trigger_error($e->getMessage());
     }
