@@ -6,10 +6,6 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 // Application
-define('BASE_URL', '/');
-define('PAGE_LIMIT', 10);
-define('SEF_MODE', false);
-
 define('BASE_URL', 'https://kvazar.today');
 define('PAGE_LIMIT', 10);
 define('SEF_MODE', true);
