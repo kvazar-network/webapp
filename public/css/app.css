@@ -12,7 +12,7 @@ button::-moz-focus-inner {
 
 input, button {
   opacity: 0.8;
-  color: #171028;
+  color: #000;
   background: #BFBACC;
   border: 0;
   border-radius: 3px;
@@ -24,7 +24,7 @@ input, button {
 
 body {
   color: #E8E8E8;
-  background-color: #171028;
+  background-color: #000;
   font-family: Sans-Serif, Arial;
   font-size: 14px;
   font-weight: normal;
@@ -96,7 +96,7 @@ img:hover {
 
 .b-g::before {
   content: "";
-  background-image: linear-gradient(to left, #9B94BF, #171028);
+  background-image: linear-gradient(to left, #9B94BF, #000);
   height: 1px;
   width: 50%;
   max-width: 360px;
@@ -105,7 +105,7 @@ img:hover {
 
 .b-g::after {
   content: "";
-  background-image: linear-gradient(to right, #9B94BF, #171028);
+  background-image: linear-gradient(to right, #9B94BF, #000);
   height: 1px;
   width: 50%;
   max-width: 360px;
