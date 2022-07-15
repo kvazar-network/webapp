@@ -69,7 +69,7 @@ foreach ($db->getData($ns, $tx, $query, $limit, PAGE_LIMIT) as $value) {
   ];
 }
 
-if (SEF_MODE) {
+if (SEF_MODE && !$query) {
 
   if (in_array($page, [0, 1])) {
     $newer = false;
