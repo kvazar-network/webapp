@@ -73,28 +73,23 @@ foreach ($db->getData($ns, $tx, $query, $limit, PAGE_LIMIT) as $value) {
   ];
 }
 
-if (!$query) {
+$older = false;
+$newer = false;
 
+if (!in_array($page, [0, 1])) {
+  if ($page == 2) {
+    $newer = ($ns ? $ns : '');
+  } else {
+    $newer = ($ns ? $ns . '/' . ($page - 1) : ($page - 1));
+  }
+}
+
+if ($data) {
   if (in_array($page, [0, 1])) {
-    $newer = false;
+    $older = ($ns ? $ns . '/2' : '2');
   } else {
-    if ($page == 2) {
-      $newer = ($ns ? $ns : '');
-    } else {
-      $newer = ($ns ? $ns . '/' . ($page - 1) : ($page - 1));
-    }
+    $older = ($ns ? $ns . '/' . ($page + 1) : ($page + 1));
   }
-
-  if ($data) {
-    if (in_array($page, [0, 1])) {
-      $older = ($ns ? $ns . '/2' : '2');
-    } else {
-      $older = ($ns ? $ns . '/' . ($page + 1) : ($page + 1));
-    }
-  } else {
-    $older = false;
-  }
-
 }
 
 if ($ns) {
