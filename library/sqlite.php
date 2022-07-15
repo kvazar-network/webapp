@@ -87,7 +87,7 @@ class SQLite {
 
       $result = $query->fetch();
 
-      return $result ? $result['value'] : false;
+      return $result ? $result['value'] : '';
 
     } catch(PDOException $e) {
 
@@ -109,7 +109,7 @@ class SQLite {
 
       $query->execute([$txid]);
 
-      return $query->rowCount() ? $query->fetch()['hash'] : [];
+      return $query->rowCount() ? $query->fetch()['hash'] : '';
 
     } catch(PDOException $e) {
 
