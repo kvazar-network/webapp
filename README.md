@@ -14,6 +14,14 @@ php-gd
 
 https://github.com/kvazar-network/database
 
+##### MySQL
+
+https://github.com/kvazar-network/webapp/tree/master
+
+##### SQLite
+
+https://github.com/kvazar-network/webapp/tree/sqlite
+
 #### crontab
 
 ```
