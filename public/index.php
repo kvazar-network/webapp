@@ -8,6 +8,7 @@ $query = isset($_GET['q'])  ? preg_replace('/[\W\D\S]+/',     '', $_GET['q'])  :
 $ns    = isset($_GET['ns']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['ns']) : false;
 $tx    = isset($_GET['tx']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['tx']) : false;
 $page  = (int) isset($_GET['page']) ? $_GET['page'] : 0;
+$rss   = isset($_GET['rss']) ? true : false;
 
 if (SEF_MODE && isset($_SERVER['QUERY_STRING'])) {
 
@@ -62,9 +63,9 @@ foreach ($db->getData($ns, $tx, $query, $limit, PAGE_LIMIT) as $value) {
     'namehash' => $value['namehash'],
     'block'    => $value['block'],
     'txid'     => $value['txid'],
-    'time'     => date('d-m-Y H:i', $value['time']),
-    'key'      => nl2br(trim($value['key'])),
-    'value'    => nl2br(trim($value['value'])),
+    'time'     => date(($rss ? 'r' : 'd-m-Y H:i'), $value['time']),
+    'key'      => $rss ? htmlentities(strip_tags(trim($value['key'])), ENT_XML1) : nl2br(trim($value['key'])),
+    'value'    => $rss ? htmlentities(strip_tags(trim($value['value'])), ENT_XML1): nl2br(trim($value['value'])),
   ];
 }
 
@@ -127,4 +128,13 @@ if ($ns) {
   }
 }
 
-require_once('index.phtml');
+if ($rss) {
+
+  header('Content-type: application/xml');
+  require_once('rss.phtml');
+
+} else {
+
+  require_once('index.phtml');
+
+}
