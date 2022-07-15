@@ -33,7 +33,7 @@
       </div>
       <?php if ($ns) { ?>
         <div class="mx-a mw-560 px-16 pb-16">
-          <img class="br-50 shine" src="/image.php?hash=<?php echo $ns; ?>" alt="<?php echo $ns; ?>" />
+          <img class="br-50 shine" src="<?php echo BASE_URL; ?>image.php?hash=<?php echo $ns; ?>" alt="<?php echo $ns; ?>" />
         </div>
       <?php } ?>
       <div class="mb-36 c-1"><?php echo $namespaceValue ? $namespaceValue : 'Observe Kevacoin Universe'; ?></div>
@@ -48,7 +48,7 @@
         <?php if (!$ns) { ?>
           <div class="mx-a mw-560 mb-16">
             <a href="<?php echo BASE_URL; ?><?php echo $item['namehash']; ?>">
-              <img class="br-50" src="/image.php?hash=<?php echo $item['namehash']; ?>" alt="<?php echo $item['namehash']; ?>" />
+              <img class="br-50" src="<?php echo BASE_URL; ?>image.php?hash=<?php echo $item['namehash']; ?>" alt="<?php echo $item['namehash']; ?>" />
             </a>
           </div>
         <?php } ?>
