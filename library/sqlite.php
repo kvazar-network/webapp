@@ -118,7 +118,7 @@ class SQLite {
     }
   }
 
-  public function getData(bool $namehash = false, bool $txid = false, bool $search = false, int $start = 0, int $limit = 10) {
+  public function getData(string $namehash = '', string $txid = '', string $search = '', int $start = 0, int $limit = 10) {
 
     try {
 
