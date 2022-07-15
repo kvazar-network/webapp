@@ -98,7 +98,7 @@
   </div>
   <div class="t-center px-16 pb-27">
     <?php if (!$tx && !$page) { ?>
-      <div class="pb-16 f-s-12"><a href="?rss" rel="nofollow">RSS</a></div>
+      <div class="pb-16 f-s-12"><a href="<?php echo $query ? '?q=' . $query . '&rss' : '?rss'; ?>" rel="nofollow">RSS</a></div>
     <?php } ?>
     <div class="pb-16 f-s-12 c-1"><a href="https://github.com/kvazar-network/webapp">KVAZAR Webapp</a> is the content exploring platform for <a href="https://kevacoin.org">Kevacoin Blockchain</a>.</div>
     <div class="f-s-12 c-1">Sources distributed under the MIT License. Ownership of all content belongs to the authors.</div>
