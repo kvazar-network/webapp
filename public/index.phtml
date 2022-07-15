@@ -47,19 +47,13 @@
       <div class="mx-a mw-560 px-16">
         <?php if (!$ns) { ?>
           <div class="mx-a mw-560 mb-16">
-            <?php if (SEF_MODE) { ?>
-              <a href="<?php echo BASE_URL; ?><?php echo $item['namehash']; ?>">
-                <img class="br-50" src="/image.php?hash=<?php echo $item['namehash']; ?>" alt="<?php echo $item['namehash']; ?>" />
-              </a>
-            <?php } else { ?>
-              <a href="<?php echo BASE_URL; ?>?ns=<?php echo $item['namehash']; ?>">
-                <img class="br-50" src="/image.php?hash=<?php echo $item['namehash']; ?>" alt="<?php echo $item['namehash']; ?>" />
-              </a>
-            <?php } ?>
+            <a href="<?php echo BASE_URL; ?><?php echo $item['namehash']; ?>">
+              <img class="br-50" src="/image.php?hash=<?php echo $item['namehash']; ?>" alt="<?php echo $item['namehash']; ?>" />
+            </a>
           </div>
         <?php } ?>
         <?php if (!$tx) { ?>
-        <a class="d-block" href="<?php echo BASE_URL; ?><?php echo (SEF_MODE ? $item['txid'] : '?tx=' . $item['txid']); ?>">
+        <a class="d-block" href="<?php echo BASE_URL; ?><?php echo $item['txid']; ?>">
         <?php } ?>
           <div class="f-s-16 mb-16 of-a">
             <?php echo $item['key']; ?>

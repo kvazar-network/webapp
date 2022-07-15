@@ -10,7 +10,7 @@ $tx    = isset($_GET['tx']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['tx']) :
 $page  = (int) isset($_GET['page']) ? $_GET['page'] : 0;
 $rss   = isset($_GET['rss']) ? true : false;
 
-if (SEF_MODE && isset($_SERVER['QUERY_STRING'])) {
+if (isset($_SERVER['QUERY_STRING'])) {
 
   $q = explode('/', $_SERVER['QUERY_STRING']);
 
@@ -73,7 +73,7 @@ foreach ($db->getData($ns, $tx, $query, $limit, PAGE_LIMIT) as $value) {
   ];
 }
 
-if (SEF_MODE && !$query) {
+if (!$query) {
 
   if (in_array($page, [0, 1])) {
     $newer = false;
@@ -95,27 +95,6 @@ if (SEF_MODE && !$query) {
     $older = false;
   }
 
-} else {
-
-  if (in_array($page, [0, 1])) {
-    $newer = false;
-  } else {
-    if ($page == 2) {
-      $newer = ($ns ? '?ns=' . $ns : ($query ? '?q=' . $query : ''));
-    } else {
-      $newer = ($ns ? '?ns=' . $ns . '&page=' . ($page - 1) : '?page=' . ($page - 1) . ($query ? '&q=' . $query : ''));
-    }
-  }
-
-  if ($data) {
-    if (in_array($page, [0, 1])) {
-      $older = ($ns ? '?ns=' . $ns . '&page=2' : '?page=2' . ($query ? '&q=' . $query : ''));
-    } else {
-      $older = ($ns ? '?ns=' . $ns . '&page=' . ($page + 1) : '?page=' . ($page + 1) . ($query ? '&q=' . $query : ''));
-    }
-  } else {
-    $older = false;
-  }
 }
 
 if ($ns) {
