@@ -82,6 +82,10 @@ if (!in_array($page, [0, 1])) {
   } else {
     $newer = ($ns ? $ns . '/' . ($page - 1) : ($page - 1));
   }
+
+  if ($query) {
+    $newer = $newer . '?q=' . $query;
+  }
 }
 
 if ($data) {
@@ -89,6 +93,10 @@ if ($data) {
     $older = ($ns ? $ns . '/2' : '2');
   } else {
     $older = ($ns ? $ns . '/' . ($page + 1) : ($page + 1));
+  }
+
+  if ($query) {
+    $older = $older . '?q=' . $query;
   }
 }
 
