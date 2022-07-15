@@ -4,9 +4,9 @@ require_once('../config.php');
 require_once('../library/icon.php');
 require_once('../library/sqlite.php');
 
-$query = isset($_GET['q'])  ? preg_replace('/[^\w\s]+/u',     '', $_GET['q'])  : false;
-$ns    = isset($_GET['ns']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['ns']) : false;
-$tx    = isset($_GET['tx']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['tx']) : false;
+$query = isset($_GET['q'])  ? preg_replace('/[^\w\s]+/u',     '', $_GET['q'])  : '';
+$ns    = isset($_GET['ns']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['ns']) : '';
+$tx    = isset($_GET['tx']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['tx']) : '';
 $page  = (int) isset($_GET['page']) ? $_GET['page'] : 0;
 $rss   = isset($_GET['rss']) ? true : false;
 
