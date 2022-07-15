@@ -2,13 +2,13 @@
 
 class SQLite {
 
-  private $_db;
+  private PDO $_db;
 
-  public function __construct($database, $username, $password) {
+  public function __construct(string $database, string $username, string $password) {
 
     try {
 
-      $this->_db = new PDO('sqlite:' . $database, $username, $password, [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8']);
+      $this->_db = new PDO('sqlite:' . $database, $username, $password);
       $this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
       $this->_db->setAttribute(PDO::ATTR_TIMEOUT, 600);
@@ -66,7 +66,7 @@ class SQLite {
     }
   }
 
-  public function getNamespaceValueByNS($ns) {
+  public function getNamespaceValueByNS(string $ns) {
 
     try {
 
@@ -96,7 +96,7 @@ class SQLite {
     }
   }
 
-  public function getNamespaceHashByTX($txid) {
+  public function getNamespaceHashByTX(string $txid) {
 
     try {
 
@@ -118,7 +118,7 @@ class SQLite {
     }
   }
 
-  public function getData($namehash = false, $txid = false, $search = false, $start = 0, $limit = 10) {
+  public function getData(bool $namehash = false, bool $txid = false, bool $search = false, int $start = 0, int $limit = 10) {
 
     try {
 
