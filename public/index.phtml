@@ -20,6 +20,8 @@
       <meta name="robots" content="noindex,follow" />
     <?php } else if ($tx) { ?>
       <title><?php echo $tx && isset($data[0]['key']) ? $data[0]['key'] : $tx; ?> | <?php echo ($namespaceValue ? $namespaceValue : ($namespaceHash ? $namespaceHash : false)); ?> | KVAZAR</title>
+      <?php } else if ($query) { ?>
+      <title>KVAZAR | SEARCH | <?php echo $query; ?></title>
     <?php } else { ?>
       <title>KVAZAR | TODAY</title>
     <?php } ?>
