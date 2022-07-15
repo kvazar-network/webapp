@@ -4,7 +4,7 @@ require_once('../config.php');
 require_once('../library/icon.php');
 require_once('../library/sqlite.php');
 
-$query = isset($_GET['q'])  ? $_GET['q'] : false;
+$query = isset($_GET['q'])  ? preg_replace('/[\W\D\S]+/',     '', $_GET['q']) : false;
 $ns    = isset($_GET['ns']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['ns']) : false;
 $tx    = isset($_GET['tx']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['tx']) : false;
 $page  = (int) isset($_GET['page']) ? $_GET['page'] : 0;
@@ -41,8 +41,18 @@ if ($page > 0) {
 $db = new SQLite(DB_NAME, DB_USERNAME, DB_PASSWORD);
 
 if ($ns) {
-  $namespaceValue = $db->getNamespaceName($ns);
+
+  $namespaceHash  = $ns;
+  $namespaceValue = $db->getNamespaceValueByNS($ns);
+
+} else if ($tx) {
+
+  $namespaceHash  = $db->getNamespaceHashByTX($tx);
+  $namespaceValue = $db->getNamespaceValueByNS($namespaceHash);
+
 } else {
+
+  $namespaceHash  = false;
   $namespaceValue = false;
 }
 

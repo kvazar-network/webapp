@@ -1,8 +1,8 @@
 button::-moz-focus-inner {
   border: 0;
-	padding: 0;
-	margin-top:-2px;
-	margin-bottom: -2px;
+  padding: 0;
+  margin-top:-2px;
+  margin-bottom: -2px;
 }
 
 * {
@@ -12,12 +12,19 @@ button::-moz-focus-inner {
 
 input, button {
   opacity: 0.8;
-  color: #5A526C;
+  color: #18102d;
+  background: #BFBACC;
+  border: 0;
+  border-radius: 3px;
+  height: 18px;
+  line-height: 18px;
+  outline: none;
+  text-align: center;
 }
 
 body {
   color: #E8E8E8;
-  background-color: #000;
+  background-color: #18102d;
   font-family: Sans-Serif, Arial;
   font-size: 14px;
   font-weight: normal;
@@ -88,19 +95,21 @@ img:hover {
 }
 
 .b-g::before {
-    content: "";
-    background-image: linear-gradient(to left, #9B94BF, #000);
-    height: 1px;
-    width: 360px;
-    display: inline-block;
+  content: "";
+  background-image: linear-gradient(to left, #9B94BF, #18102d);
+  height: 1px;
+  width: 50%;
+  max-width: 360px;
+  display: inline-block;
 }
 
 .b-g::after {
-    content: "";
-    background-image: linear-gradient(to right, #9B94BF, #000);
-    height: 1px;
-    width: 360px;
-    display: inline-block;
+  content: "";
+  background-image: linear-gradient(to right, #9B94BF, #18102d);
+  height: 1px;
+  width: 50%;
+  max-width: 360px;
+  display: inline-block;
 }
 
 .br-50 {

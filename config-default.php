@@ -10,6 +10,11 @@ define('BASE_URL', '/');
 define('PAGE_LIMIT', 10);
 define('SEF_MODE', false);
 
+define('BASE_URL', 'https://kvazar.today');
+define('PAGE_LIMIT', 10);
+define('SEF_MODE', true);
+define('CACHE_ENABLED', false);
+
 // Database
 define('DB_NAME', 'kvazar.dat');
 define('DB_USERNAME', '');

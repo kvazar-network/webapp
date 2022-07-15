@@ -16,7 +16,7 @@ class SQLite {
     }
   }
 
-  public function getNamespaceName($namehash) {
+  public function getNamespaceValueByNS($ns) {
 
     try {
 
@@ -27,17 +27,39 @@ class SQLite {
 
                                            WHERE `namespace`.`hash` = ?
                                              AND `data`.`ns`        = "1"
-                                             AND `data`.`deleted`   = "0"
+                                             -- AND `data`.`deleted`   = "0" --
 
                                            ORDER BY `data`.`blockId` DESC
 
                                            LIMIT 1');
 
-      $query->execute([$namehash]);
+      $query->execute([$ns]);
 
       $result = $query->fetch();
 
       return $result ? $result['value'] : false;
+
+    } catch(PDOException $e) {
+
+      trigger_error($e->getMessage());
+      return false;
+    }
+  }
+
+  public function getNamespaceHashByTX($txid) {
+
+    try {
+
+      $query = $this->_db->prepare('SELECT `namespace`.`hash`
+
+                                           FROM `namespace`
+                                           JOIN `data` ON (`data`.`nameSpaceId` = `namespace`.`nameSpaceId`)
+
+                                           WHERE `data`.`txid` = ?');
+
+      $query->execute([$txid]);
+
+      return $query->rowCount() ? $query->fetch()['hash'] : [];
 
     } catch(PDOException $e) {
 
@@ -65,7 +87,7 @@ class SQLite {
 
                                              WHERE `data`.`txid`    = ?
                                                AND `data`.`ns`      = "0"
-                                               AND `data`.`deleted` = "0"
+                                               -- AND `data`.`deleted` = "0" --
 
                                              ORDER BY `block`.`blockId` DESC
 
@@ -88,7 +110,7 @@ class SQLite {
 
                                              WHERE `namespace`.`hash` = ?
                                                AND `data`.`ns`        = "0"
-                                               AND `data`.`deleted`   = "0"
+                                               -- AND `data`.`deleted`   = "0" --
 
                                              ORDER BY `block`.`blockId` DESC
 
@@ -116,7 +138,7 @@ class SQLite {
                                                 OR  `data`.`txid`      LIKE :search)
 
                                                AND  `data`.`ns`      = "0"
-                                               AND  `data`.`deleted` = "0"
+                                               -- AND  `data`.`deleted` = "0" --
 
                                              ORDER BY `block`.`blockId` DESC
 
@@ -140,7 +162,7 @@ class SQLite {
                                              JOIN `namespace` ON (`namespace`.`nameSpaceId` = `data`.`nameSpaceId`)
 
                                              WHERE `data`.`ns`      = "0"
-                                               AND `data`.`deleted` = "0"
+                                               -- AND `data`.`deleted` = "0" --
 
                                              ORDER BY `block`.`blockId` DESC
 
