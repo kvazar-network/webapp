@@ -2,6 +2,8 @@
 
 class MySQL {
 
+  private _$db;
+
   public function __construct() {
 
     try {
