@@ -34,11 +34,6 @@ body {
 a {
   color: #ABA6B7;
   text-decoration: none;
-}
-
-a {
-  color: #ABA6B7;
-  text-decoration: none;
   -moz-transition: all .5s ease-in;
   -o-transition: all .5s ease-in;
   /* issue #2
