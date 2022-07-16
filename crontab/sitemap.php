@@ -18,12 +18,12 @@ $transactions = [];
 foreach ($db->getData(false, false, false, 0, 1000000) as $value) {
 
   if (!in_array($value['namehash'], $namespaces)) {
-    $namespace .= '<loc>' . BASE_URL . '/' . $value['namehash'] . '</loc>';
+    $namespace .= '<loc>' . BASE_URL . $value['namehash'] . '</loc>';
   }
 
 
   if (!in_array($value['namehash'], $transactions)) {
-    $transaction .= '<loc>' . BASE_URL . '/' . $value['txid'] . '</loc>';
+    $transaction .= '<loc>' . BASE_URL . $value['txid'] . '</loc>';
   }
 
   $namespaces[]   = $value['namehash'];
@@ -47,10 +47,10 @@ fclose($handle);
 $sitemap  = '<?xml version="1.0" encoding="UTF-8"?>';
 $sitemap .= '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 $sitemap .= '  <sitemap>';
-$sitemap .= '    <loc>' . BASE_URL . '/sitemap.namespace.xml</loc>';
+$sitemap .= '    <loc>' . BASE_URL . 'sitemap.namespace.xml</loc>';
 $sitemap .= '  </sitemap>';
 $sitemap .= '  <sitemap>';
-$sitemap .= '    <loc>' . BASE_URL . '/sitemap.transaction.xml</loc>';
+$sitemap .= '    <loc>' . BASE_URL . 'sitemap.transaction.xml</loc>';
 $sitemap .= '  </sitemap>';
 $sitemap .= '</sitemapindex>';
 
