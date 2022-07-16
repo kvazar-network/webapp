@@ -24,7 +24,7 @@ input, button {
 
 body {
   color: #BFBACC;
-  background-color: #18102d;
+  background-color: #000;
   font-family: Sans-Serif, Arial;
   font-size: 14px;
   font-weight: normal;
@@ -96,7 +96,7 @@ img:hover {
 
 .b-g::before {
   content: "";
-  background-image: linear-gradient(to left, #9B94BF, #18102d);
+  background-image: linear-gradient(to left, #9B94BF, #000);
   height: 1px;
   width: 50%;
   max-width: 360px;
@@ -105,7 +105,7 @@ img:hover {
 
 .b-g::after {
   content: "";
-  background-image: linear-gradient(to right, #9B94BF, #18102d);
+  background-image: linear-gradient(to right, #9B94BF, #000);
   height: 1px;
   width: 50%;
   max-width: 360px;
