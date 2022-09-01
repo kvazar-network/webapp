@@ -41,7 +41,7 @@ location @sef {
 }
 ```
 
-### exampleshttps://kvazar.today
+### examples
 
 #### yggdrasil
 [http://[203:9fd0:95df:54d7:29db:5ee1:fe2d:95c7]](http://[203:9fd0:95df:54d7:29db:5ee1:fe2d:95c7])
