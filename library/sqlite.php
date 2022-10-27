@@ -231,4 +231,38 @@ class SQLite {
       return false;
     }
   }
+
+  public function getTrends(int $offset = 0) {
+
+    try {
+
+      $query = $this->_db->prepare('SELECT `block`.`blockId` AS `block`,
+                                            `namespace`.`hash` AS `namehash`,
+                                            `data`.`time` AS `time`,
+                                            `data`.`key` AS `key`,
+                                            `data`.`value` AS `value`,
+                                            `data`.`txid` AS `txid`
+
+                                            FROM `data`
+                                            JOIN `block` ON (`block`.`blockId` = `data`.`blockId`)
+                                            JOIN `namespace` ON (`namespace`.`nameSpaceId` = `data`.`nameSpaceId`)
+
+                                            WHERE `data`.`ns`      = "0"
+                                            AND   `data`.`time`    >= ' . (int) $offset . '
+                                              -- AND `data`.`deleted` = "0" --
+
+                                            ORDER BY `block`.`blockId` DESC');
+
+      $query->execute();
+
+      $result = $query->fetchAll();
+
+      return $result ? $result : [];
+
+    } catch(PDOException $e) {
+
+      trigger_error($e->getMessage());
+      return false;
+    }
+  }
 }

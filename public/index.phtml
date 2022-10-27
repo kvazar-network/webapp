@@ -44,6 +44,18 @@
   <div class="t-center px-16 pb-36">
     <div class="b-g"></div>
   </div>
+  <?php if ($trends && !$ns && !$tx && !$page && !$q) { ?>
+  <div class="t-center px-16">
+    <div class="mx-a mw-560 px-16">
+    <?php foreach ($trends as $trend) { ?>
+      #<a href="<?php echo BASE_URL; ?>?q=<?php echo $trend; ?>"><?php echo $trend; ?></a>
+    <?php } ?>
+    </div>
+  </div>
+  <div class="t-center px-16 py-27">
+    <div class="b-g"></div>
+  </div>
+  <?php } ?>
   <?php foreach ($data as $item) { ?>
     <div class="t-center px-16">
       <div class="mx-a mw-560 px-16">

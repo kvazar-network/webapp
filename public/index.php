@@ -61,6 +61,48 @@ if ($ns) {
   $namespaceValue = false;
 }
 
+$trends = [];
+
+if (TRENDS_ENABLED) {
+
+  foreach ($db->getTrends(time() - TRENDS_SECONDS_OFFSET) as $value) {
+
+    foreach ((array) explode(' ', strip_tags(html_entity_decode(nl2br(trim($value['key']))))) as $trend) {
+
+      if (strlen($trend) >= TRENDS_MIN_LENGHT) {
+
+        $trend = strtolower($trend);
+
+        if (isset($trends[$trend])) {
+          $trends[$trend]++;
+        } else {
+          $trends[$trend] = 1;
+        }
+      }
+    }
+
+    foreach ((array) explode(' ', strip_tags(html_entity_decode(nl2br(trim($value['value']))))) as $trend) {
+
+      if (strlen($trend) >= TRENDS_MIN_LENGHT) {
+
+        $trend = strtolower($trend);
+
+        if (isset($trends[$trend])) {
+          $trends[$trend]++;
+        } else {
+          $trends[$trend] = 1;
+        }
+      }
+    }
+  }
+
+  arsort($trends);
+
+  $trends = array_slice($trends, 0, TRENDS_LIMIT);
+
+  $trends = array_flip($trends);
+}
+
 $data = [];
 foreach ($db->getData($ns, $tx, $query, $limit, PAGE_LIMIT) as $value) {
   $data[] = [
