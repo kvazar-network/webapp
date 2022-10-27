@@ -4,24 +4,23 @@ require_once('../config.php');
 require_once('../library/icon.php');
 require_once('../library/sqlite.php');
 
-$query = isset($_GET['q'])  ? preg_replace('/[^\w\s]+/u',     '', $_GET['q'])  : '';
-$ns    = isset($_GET['ns']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['ns']) : '';
-$tx    = isset($_GET['tx']) ? preg_replace('/[^a-zA-Z0-9]+/', '', $_GET['tx']) : '';
-$page  = (int) isset($_GET['page']) ? $_GET['page'] : 0;
-$rss   = isset($_GET['rss']) ? true : false;
+$query = isset($_GET['q']) ? preg_replace('/[^\w\s]+/u', '', urldecode($_GET['q'])) : '';
+$ns    = '';
+$tx    = '';
+$page  = 0;
 
-if (isset($_SERVER['QUERY_STRING'])) {
+if (isset($_SERVER['REQUEST_URI'])) {
 
-  $q = explode('/', $_SERVER['QUERY_STRING']);
+  $q = explode('/', $_SERVER['REQUEST_URI']);
 
   if (isset($q[1])) {
     if ($q[1] == 'rss') {
       $rss = true;
     } else if (strlen($q[1]) == 34) {
       $ns = preg_replace('/[^a-zA-Z0-9]+/', '', $q[1]);
-    } else if (strlen($q[1]) > 34) {
+    } else if (strlen($q[1]) == 64) {
       $tx = preg_replace('/[^a-zA-Z0-9]+/', '', $q[1]);
-    } else {
+    } else if (preg_match('/[0-9]+/', $q[1])) {
       $page = (int) $q[1];
     }
   }
@@ -31,10 +30,14 @@ if (isset($_SERVER['QUERY_STRING'])) {
       $rss = true;
     } else if (strlen($q[2]) == 34) {
       $ns = preg_replace('/[^a-zA-Z0-9]+/', '', $q[2]);
-    } else {
+    } else if (preg_match('/[0-9]+/', $q[2])) {
       $page = (int) $q[2];
     }
   }
+}
+
+if ($query) {
+  $rss = isset($_GET['rss']) ? true : false;
 }
 
 if ($page > 0) {
