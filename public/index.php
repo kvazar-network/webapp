@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 require_once('../config.php');
@@ -169,3 +170,5 @@ if ($rss) {
   require_once('index.phtml');
 
 }
+=======
+>>>>>>> master
