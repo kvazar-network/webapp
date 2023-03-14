@@ -6,14 +6,16 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 // Application
-define('BASE_URL', 'https://kvazar.today');
+define('BASE_URL', 'https://kvazar.today/');
 define('PAGE_LIMIT', 10);
-define('SEF_MODE', true);
 define('CACHE_ENABLED', false);
 
+define('TRENDS_ENABLED', false); // alpha
+define('TRENDS_SECONDS_OFFSET', 2592000);
+define('TRENDS_MIN_LENGHT', 4);
+define('TRENDS_LIMIT', 40);
+
 // Database
-define('DB_HOST', 'localhost');
-define('DB_PORT', '3306');
-define('DB_NAME', '');
+define('DB_NAME', '../kvazar.sqlite');
 define('DB_USERNAME', '');
 define('DB_PASSWORD', '');

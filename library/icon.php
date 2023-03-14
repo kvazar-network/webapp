@@ -165,7 +165,7 @@ final class Icon {
 
     for ($i = 0; $i < count($shape); $i++)
       $shape[$i] = $shape[$i] * $this->_spriteZ;
-    imagefilledpolygon($sprite, $shape, count($shape) / 2, $fg);
+    imagefilledpolygon($sprite, $shape, $fg);
 
     for ($i = 0; $i < $rotation; $i++)
       $sprite = imagerotate($sprite, 90, $bg);
@@ -215,7 +215,7 @@ final class Icon {
     for ($i = 0; $i < count($shape); $i++)
       $shape[$i] = $shape[$i] * $this->_spriteZ;
     if (count($shape) > 0)
-      imagefilledpolygon($sprite, $shape, count($shape) / 2, $fg);
+      imagefilledpolygon($sprite, $shape, $fg);
 
     return $sprite;
   }

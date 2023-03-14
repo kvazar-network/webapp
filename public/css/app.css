@@ -12,8 +12,8 @@ button::-moz-focus-inner {
 
 input, button {
   opacity: 0.8;
-  color: #18102d;
-  background: #BFBACC;
+  color: #000;
+  background: #ABA6B7;
   border: 0;
   border-radius: 3px;
   height: 18px;
@@ -23,8 +23,8 @@ input, button {
 }
 
 body {
-  color: #E8E8E8;
-  background-color: #18102d;
+  color: #BFBACC;
+  background-color: #000;
   font-family: Sans-Serif, Arial;
   font-size: 14px;
   font-weight: normal;
@@ -32,12 +32,7 @@ body {
 }
 
 a {
-  color: #BFBACC;
-  text-decoration: none;
-}
-
-a {
-  color: #BFBACC;
+  color: #ABA6B7;
   text-decoration: none;
   -moz-transition: all .5s ease-in;
   -o-transition: all .5s ease-in;
@@ -47,7 +42,7 @@ a {
 }
 
 a:hover {
-  color: #E8E8E8;
+  color: #BFBACC;
   -webkit-transition: all .5s ease-in; /* issue #2 */
 }
 
@@ -96,7 +91,7 @@ img:hover {
 
 .b-g::before {
   content: "";
-  background-image: linear-gradient(to left, #9B94BF, #18102d);
+  background-image: linear-gradient(to left, #9B94BF, #000);
   height: 1px;
   width: 50%;
   max-width: 360px;
@@ -105,7 +100,7 @@ img:hover {
 
 .b-g::after {
   content: "";
-  background-image: linear-gradient(to right, #9B94BF, #18102d);
+  background-image: linear-gradient(to right, #9B94BF, #000);
   height: 1px;
   width: 50%;
   max-width: 360px;
@@ -127,7 +122,7 @@ img:hover {
 .c-1:active,
 .c-1:visited,
 .c-1:hover {
-  color: #ABA6B7;
+  color: #BFBACC;
 }
 
 .c-2,
