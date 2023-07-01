@@ -8,6 +8,7 @@ $query = isset($_GET['q']) ? preg_replace('/[^\w\s]+/u', '', urldecode($_GET['q'
 $ns    = '';
 $tx    = '';
 $page  = 0;
+$rss   = false;
 
 if (isset($_SERVER['REQUEST_URI'])) {
 
