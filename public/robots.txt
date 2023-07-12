@@ -1,2 +1,2 @@
 User-Agent: *
-Sitemap: https://kvazar.today/sitemap.xml
+Sitemap: /sitemap.xml

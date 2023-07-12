@@ -5,7 +5,7 @@
                                                            ($query ? '?q=' . $query . '&amp;rss' : 'rss')); ?>" rel="self" type="application/rss+xml"></atom:link>
   <title>KVAZAR - <?php echo ($namespaceValue ? $namespaceValue :
                                                ($namespaceHash ? $namespaceHash :
-                                                                ($query ? 'SEARCH - ' . $query : 'TODAY'))); ?></title>
+                                                                ($query ? 'SEARCH - ' . $query : false))); ?></title>
   <description>Observe Kevacoin Universe</description>
   <link><?php echo BASE_URL; ?><?php echo ($ns ? $ns : ($query ? '?q=' . $query : false)); ?></link>
   <?php foreach ($data as $item) { ?>
