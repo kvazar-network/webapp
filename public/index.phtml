@@ -4,26 +4,25 @@
   <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/app.css?v=9" />
   <meta charset="UTF-8" />
   <meta name="description" content="Open Source Content Exploring Platform for Kevacoin Blockchain" />
-  <?php if ($namespaceHash) { ?>
-    <link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>image.php?hash=<?php echo $namespaceHash; ?>&radius=30" />
+  <?php if (!$tx) { ?>
+    <meta name="robots" content="noindex,follow" />
   <?php } ?>
+  <link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>image.php?hash=<?php echo $namespaceHash; ?>&radius=30" />
   <?php if ($ns) { ?>
     <?php if ($page) { ?>
       <title><?php echo $namespaceValue ? $namespaceValue : $ns; ?> | PART <?php echo $page; ?> | KVAZAR</title>
-      <meta name="robots" content="noindex,follow" />
     <?php } else { ?>
       <title><?php echo $namespaceValue ? $namespaceValue : $ns; ?> | KVAZAR</title>
     <?php } ?>
   <?php } else { ?>
     <?php if ($page) { ?>
       <title>KVAZAR | PART <?php echo $page; ?></title>
-      <meta name="robots" content="noindex,follow" />
     <?php } else if ($tx) { ?>
       <title><?php echo $tx && isset($data[0]['key']) ? $data[0]['key'] : $tx; ?> | <?php echo ($namespaceValue ? $namespaceValue : ($namespaceHash ? $namespaceHash : false)); ?> | KVAZAR</title>
       <?php } else if ($query) { ?>
       <title>KVAZAR | SEARCH | <?php echo $query; ?></title>
     <?php } else { ?>
-      <title>KVAZAR | TODAY</title>
+      <title>KVAZAR</title>
     <?php } ?>
   <?php } ?>
 </head>

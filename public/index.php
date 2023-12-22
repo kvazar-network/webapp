@@ -1,13 +1,14 @@
 <?php
 
-require_once('../config.php');
-require_once('../library/icon.php');
-require_once('../library/sqlite.php');
+require_once(__DIR__ . '/../config.php');
+require_once(__DIR__ . '/../library/icon.php');
+require_once(__DIR__ . '/../library/sqlite.php');
 
 $query = isset($_GET['q']) ? preg_replace('/[^\w\s]+/u', '', urldecode($_GET['q'])) : '';
 $ns    = '';
 $tx    = '';
 $page  = 0;
+$rss   = false;
 
 if (isset($_SERVER['REQUEST_URI'])) {
 
