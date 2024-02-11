@@ -1,0 +1,12 @@
+twig:
+    file_name_pattern: '*.twig'
+    default_path: '%kernel.project_dir%/templates'
+    globals:
+        app:
+            version: '%app.version%'
+            theme: '%app.theme%'
+            name: '%app.name%'
+
+when@test:
+    twig:
+        strict_variables: true
