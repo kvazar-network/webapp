@@ -12,12 +12,6 @@ Master branch currently under development!
 * `cd webapp`
 * `composer install`
 
-## Setup
-
-* Web application requires RPC connection to KevaCoin node
-* Manticore search server must be installed also (application uses `php-pdo` driver to interact search index)
-* Configure crontab task to update search index: `* * * * * /crontab/index`
-
 ## Launch
 
 * `symfony server:start`
