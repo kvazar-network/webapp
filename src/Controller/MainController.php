@@ -11,8 +11,17 @@ use Symfony\Component\HttpFoundation\Request;
 class MainController extends AbstractController
 {
     #[Route(
-        '/',
+        '/{part}',
         name: 'main_index',
+        requirements:
+        [
+            'namespace' => '^N[A-z0-9]{33}$',
+            'part' => '^[\d]+$',
+        ],
+        defaults:
+        [
+            'part' => 1,
+        ],
         methods:
         [
             'GET'
@@ -42,11 +51,16 @@ class MainController extends AbstractController
     }
 
     #[Route(
-        '/{namespace}',
+        '/{namespace}/{part}',
         name: 'main_namespace',
         requirements:
         [
             'namespace' => '^N[A-z0-9]{33}$',
+            'part' => '^[\d]+$',
+        ],
+        defaults:
+        [
+            'part' => 1,
         ],
         methods:
         [
