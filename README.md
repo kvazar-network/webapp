@@ -12,6 +12,11 @@ Currently under development!
 * `cd webapp`
 * `composer install`
 
+## Index
+
+* Install [crawler](https://github.com/kvazar-network/crawler) with `composer create-project kvazar/crawler`
+* Add crontab task `crontab -e`: `* * * * * php kvazar/crawler/src/index.php`
+
 ## Launch
 
 * `symfony server:start`
