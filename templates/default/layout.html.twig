@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <title>{% block title %}{{ app.name }}{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="/css/{{ app.theme }}.css?{{ app.version }}" />
-        <link rel="icon" href="{% block favicon %}/favicon.ico{% endblock %}" />
+        {% block favicon %}{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
