@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kvazar-network/index-php.git",
-                "reference": "7da0ac4a5eefd3b9b727a750b7c53866995ff09b"
+                "reference": "3373b57d1e90ac3fb617319a9ceb9ffcc13a6577"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kvazar-network/index-php/zipball/7da0ac4a5eefd3b9b727a750b7c53866995ff09b",
-                "reference": "7da0ac4a5eefd3b9b727a750b7c53866995ff09b",
+                "url": "https://api.github.com/repos/kvazar-network/index-php/zipball/3373b57d1e90ac3fb617319a9ceb9ffcc13a6577",
+                "reference": "3373b57d1e90ac3fb617319a9ceb9ffcc13a6577",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "issues": "https://github.com/kvazar-network/index-php/issues",
                 "source": "https://github.com/kvazar-network/index-php/tree/main"
             },
-            "time": "2024-02-12T20:50:51+00:00"
+            "time": "2024-02-12T21:33:03+00:00"
         },
         {
             "name": "manticoresoftware/manticoresearch-php",
