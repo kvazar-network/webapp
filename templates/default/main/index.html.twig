@@ -1,4 +1,83 @@
-{% extends 'layout.html.twig' %}
+{% extends 'default/layout.html.twig' %}
 {% block body %}
-    {{ app.name }}
+    <div class="t-center px-16 pt-54">
+        <div class="mx-a mw-560 px-16">
+            <div class="mb-20">
+                <a class="logo f-s-20 c-0" href="{{ path('main_index') }}">{{ app.name }}</a>
+            </div>
+            <div class="mb-36 c-1">
+                {{ 'Observe Kevacoin Universe' | trans }}
+            </div>
+        </div>
+    </div>
+    <div class="t-center px-16 pb-36">
+        <div class="b-g"></div>
+    </div>
+    {% for record in records %}
+        <div class="t-center px-16">
+            <div class="mx-a mw-560 px-16">
+                <div class="mx-a mw-560 mb-16">
+                    <a href="{{ path('main_index',{'namespace':record.namespace}) }}">
+                        <img class="br-50" src="{{ record.namespace | jIdenticon }}" alt="{{ record.namespace }}" />
+                    </a>
+                </div>
+                <a class="d-block" href="{{ path('main_index',{'transaction':record.transaction}) }}">
+                    <div class="f-s-16 mb-16 of-a">
+                        {{ record.key }}
+                    </div>
+                    <div class="mb-20 of-a">
+                        {{ record.value | nl2br }}
+                    </div>
+                    <div class="f-s-12">
+                        {{ record.time | format_date }} {{ 'in' | trans }} {{ record.block }}
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="t-center px-16 py-27">
+            <div class="b-g"></div>
+        </div>
+    {% endfor %}
+    <div class="t-center pt-16 pb-27">
+        {% if request.get('part') %}
+            <a rel="nofollow" href="{{
+            path(
+                'main_index',
+                {
+                    'part':request.get('part') - 1,
+                    'search':request.get('search')
+                }
+            ) }}">{{ 'older' | trans }}</a>
+            |
+        {% endif %}
+        <a rel="nofollow" href="{{
+            path(
+                'main_index',
+                {
+                    'part':(request.get('part') ? request.get('part') : 1) + 1,
+                    'search':request.get('search')
+                }
+            ) }}">{{ 'newer' | trans }}</a>
+    </div>
+    <div class="t-center px-16 pb-27">
+        <form name="namespace" action="{{ path('main_index') }}" method="GET">
+            <input  class="p-8"
+                    type="text"
+                    name="search"
+                    value="{{ request.get('search') }}"
+                    placeholder="{{ 'key, value, block, ns, txid' | trans }}"
+                    autocomplete="off" />
+            {#<button class="p-8 cursor-pointer" type="submit">{{ 'Search' | trans }}</button>#}
+        </form>
+    </div>
+    <div class="t-center px-16 pb-27">
+        <div class="pb-16 f-s-12 c-1">
+            <a href="https://github.com/kvazar-network/webapp">{{ 'KVAZAR Webapp' | trans }}</a>
+            {{ 'is content explorer for' | trans }}
+            <a href="https://kevacoin.org">{{ 'Kevacoin Blockchain' | trans }}</a>.
+        </div>
+        <div class="f-s-12 c-1">
+            {{ 'Sources distributed under the MIT License. Ownership of all content belongs to the authors.' | trans }}
+        </div>
+    </div>
 {% endblock %}

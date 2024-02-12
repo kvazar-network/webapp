@@ -23,10 +23,21 @@ class MainController extends AbstractController
         ?Request $request
     ): Response
     {
+        $index = new \Kvazar\Index\Manticore();
+
         return $this->render(
             'default/main/index.html.twig',
             [
-                'request' => $request
+                'request' => $request,
+                'records' => $index->get(
+                    $request->get('search') ? (string) $request->get('search') : '',
+                    [],
+                    [
+                        'time' => 'desc'
+                    ],
+                    $request->get('part') > 1 ? (int) $request->get('part') * $this->getParameter('app.main.index.limit') : 0,
+                    $this->getParameter('app.main.index.limit')
+                )
             ]
         );
     }

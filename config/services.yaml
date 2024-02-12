@@ -7,6 +7,7 @@ parameters:
     app.version: '%env(APP_VERSION)%'
     app.theme: '%env(APP_THEME)%'
     app.name: '%env(APP_NAME)%'
+    app.main.index.limit: '%env(APP_MAIN_INDEX_LIMIT)%'
 
 services:
     # default configuration for services in *this* file
@@ -25,3 +26,8 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Twig\AppExtension:
+        arguments:
+            - '@service_container'
+        tags:
+            - { name: twig.extension}
