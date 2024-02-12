@@ -89,6 +89,9 @@ class MainController extends AbstractController
                     ],
                     $request->get('part') > 1 ? (int) $request->get('part') * $this->getParameter('app.main.index.limit') : 0,
                     $this->getParameter('app.main.index.limit')
+                ),
+                'title' => $this->_title(
+                    $request->get('namespace')
                 )
             ]
         );
@@ -126,14 +129,46 @@ class MainController extends AbstractController
             throw $this->createNotFoundException();
         }
 
+        $record = reset(
+            $records
+        );
+
         return $this->render(
             'default/main/transaction.html.twig',
             [
                 'request' => $request,
-                'record'  => reset(
-                    $records
+                'record'  => $record,
+                'title'   => $this->_title(
+                    $record['namespace']
                 )
             ]
         );
+    }
+
+    private function _title(string $namespace): ?string
+    {
+        $index = new \Kvazar\Index\Manticore();
+
+        $title = $index->get(
+            '_KEVA_NS_',
+            [
+                'crc32namespace' => crc32(
+                    $namespace
+                )
+            ]
+        );
+
+        if ($title)
+        {
+            $title = reset(
+                $title
+            );
+
+            return trim(
+                $title['value']
+            );
+        }
+
+        return null;
     }
 }
