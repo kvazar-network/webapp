@@ -1,4 +1,7 @@
 {
+    "name": "kvazar/webapp",
+    "description": "Web Explorer for Kevacoin Blockchain",
+    "keywords": [ "kvazar", "webapp", "kevacoin", "kva", "blockchain", "explorer", "search", "symfony", "manticore" ],
     "type": "project",
     "license": "MIT",
     "minimum-stability": "stable",
