@@ -46,7 +46,7 @@ class MainController extends AbstractController
         name: 'main_namespace',
         requirements:
         [
-            'transaction' => '^N[A-z0-9]{33}$',
+            'namespace' => '^N[A-z0-9]{33}$',
         ],
         methods:
         [
