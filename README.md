@@ -14,8 +14,7 @@ Currently under development!
 
 ## Index
 
-* Install [crawler](https://github.com/kvazar-network/crawler) with `composer create-project kvazar/crawler`
-* Add crontab task `crontab -e`:`* * * * * php kvazar/crawler/src/index.php`
+To update blockchain index, use [crawler](https://github.com/kvazar-network/crawler)
 
 ## Launch
 
