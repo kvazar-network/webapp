@@ -41,4 +41,47 @@ class MainController extends AbstractController
             ]
         );
     }
+
+    #[Route(
+        '/{transaction}',
+        name: 'main_transaction',
+        requirements:
+        [
+            'transaction' => '^[A-f0-9]{64}$',
+        ],
+        methods:
+        [
+            'GET'
+        ]
+    )]
+    public function transaction(
+        ?Request $request
+    ): Response
+    {
+        $index = new \Kvazar\Index\Manticore();
+
+        $records = $index->get(
+            '',
+            [
+                'crc32transaction' => crc32(
+                    $request->get('transaction')
+                )
+            ]
+        );
+
+        if (empty($records))
+        {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render(
+            'default/main/transaction.html.twig',
+            [
+                'request' => $request,
+                'record'  => reset(
+                    $records
+                )
+            ]
+        );
+    }
 }

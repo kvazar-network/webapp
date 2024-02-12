@@ -1,0 +1,39 @@
+{% extends 'default/layout.html.twig' %}
+{% block body %}
+    <div class="t-center px-16 pt-54">
+        <div class="mx-a mw-560 px-16">
+            <div class="mb-20">
+                <a class="logo f-s-20 c-0" href="{{ path('main_index') }}">{{ app.name }}</a>
+            </div>
+            <div class="mx-a mw-560 px-16 pb-16">
+                <a href="{{ path('main_namespace',{'namespace':record.namespace}) }}">
+                    <img class="br-50 shine" src="{{ record.namespace | jIdenticon }}" alt="{{ record.namespace }}" />
+                </a>
+            </div>
+            {# @TODO current namespace value
+            <div class="mb-36 c-1">
+                {{ 'Observe Kevacoin Universe' | trans }}
+            </div>
+            #}
+        </div>
+    </div>
+    <div class="t-center px-16 pb-36">
+        <div class="b-g"></div>
+    </div>
+    <div class="t-center px-16">
+        <div class="mx-a mw-560 px-16">
+            <div class="f-s-16 mb-16 of-a">
+                {{ record.key }}
+            </div>
+            <div class="mb-20 of-a">
+                {{ record.value | nl2br }}
+            </div>
+            <div class="f-s-12">
+                {{ record.time | format_date }} {{ 'in' | trans }} {{ record.block }}
+            </div>
+        </div>
+    </div>
+    <div class="t-center px-16 py-27">
+        <div class="b-g"></div>
+    </div>
+{% endblock %}
