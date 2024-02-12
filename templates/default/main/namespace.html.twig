@@ -5,9 +5,14 @@
             <div class="mb-20">
                 <a class="logo f-s-20 c-0" href="{{ path('main_index') }}">{{ app.name }}</a>
             </div>
+            <div class="mx-a mw-560 px-16 pb-16">
+                <img class="br-50 shine" src="{{ request.get('namespace') | jIdenticon }}" alt="{{ request.get('namespace') }}" />
+            </div>
+            {# @TODO current namespace value
             <div class="mb-36 c-1">
                 {{ 'Observe Kevacoin Universe' | trans }}
             </div>
+            #}
         </div>
     </div>
     <div class="t-center px-16 pb-36">
@@ -16,11 +21,6 @@
     {% for record in records %}
         <div class="t-center px-16">
             <div class="mx-a mw-560 px-16">
-                <div class="mx-a mw-560 mb-16">
-                    <a href="{{ path('main_namespace',{'namespace':record.namespace}) }}">
-                        <img class="br-50" src="{{ record.namespace | jIdenticon }}" alt="{{ record.namespace }}" />
-                    </a>
-                </div>
                 <a class="d-block" href="{{ path('main_transaction',{'transaction':record.transaction}) }}">
                     <div class="f-s-16 mb-16 of-a">
                         {{ record.key }}
@@ -42,20 +42,22 @@
         {% if request.get('part') %}
             <a rel="nofollow" href="{{
             path(
-                'main_index',
+                'main_namespace',
                 {
                     'part':request.get('part') - 1,
-                    'search':request.get('search')
+                    'search':request.get('search'),
+                    'namespace':request.get('namespace')
                 }
             ) }}">{{ 'older' | trans }}</a>
             |
         {% endif %}
         <a rel="nofollow" href="{{
             path(
-                'main_index',
+                'main_namespace',
                 {
                     'part':(request.get('part') ? request.get('part') : 1) + 1,
-                    'search':request.get('search')
+                    'search':request.get('search'),
+                    'namespace':request.get('namespace')
                 }
             ) }}">{{ 'newer' | trans }}</a>
     </div>

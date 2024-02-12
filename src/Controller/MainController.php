@@ -43,6 +43,45 @@ class MainController extends AbstractController
     }
 
     #[Route(
+        '/{namespace}',
+        name: 'main_namespace',
+        requirements:
+        [
+            'transaction' => '^N[A-z0-9]{33}$',
+        ],
+        methods:
+        [
+            'GET'
+        ]
+    )]
+    public function namespace(
+        ?Request $request
+    ): Response
+    {
+        $index = new \Kvazar\Index\Manticore();
+
+        return $this->render(
+            'default/main/namespace.html.twig',
+            [
+                'request' => $request,
+                'records' => $index->get(
+                    $request->get('search') ? (string) $request->get('search') : '',
+                    [
+                        'crc32namespace' => crc32(
+                            $request->get('namespace')
+                        )
+                    ],
+                    [
+                        'time' => 'desc'
+                    ],
+                    $request->get('part') > 1 ? (int) $request->get('part') * $this->getParameter('app.main.index.limit') : 0,
+                    $this->getParameter('app.main.index.limit')
+                )
+            ]
+        );
+    }
+
+    #[Route(
         '/{transaction}',
         name: 'main_transaction',
         requirements:
