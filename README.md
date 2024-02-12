@@ -8,7 +8,7 @@ This branch is modern replacement to [MySQL](https://github.com/kvazar-network/w
 
 * `git clone https://github.com/kvazar-network/webapp.git`
 * `cd webapp`
-* `composer install`
+* `composer update`
 
 ## Index
 
