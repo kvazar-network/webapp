@@ -1,5 +1,5 @@
 {% extends 'default/layout.html.twig' %}
-{% block title %}{% if title %}{{ title }} - {% endif %}{{ app.name }}{% endblock %}
+{% block title %}{% if title %}{{ title }} - {% endif %}{% if request.get('part') > 1 %}{{ 'Part' | trans | upper }} {{ request.get('part') }} - {% endif %}{{ app.name }}{% endblock %}
 {% block body %}
     <div class="t-center px-16 pt-54">
         <div class="mx-a mw-560 px-16">
