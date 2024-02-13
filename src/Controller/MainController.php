@@ -28,13 +28,20 @@ class MainController extends AbstractController
         ]
     )]
     public function index(
-        ?Request $request
+        ?Request $request,
+        ?Response $response
     ): Response
     {
         $index = new \Kvazar\Index\Manticore();
 
+        if ($rss = ('rss' == $request->get('feed')))
+        {
+            $response = new Response();
+            $response->headers->set('Content-Type', 'text/xml');
+        }
+
         return $this->render(
-            'default/main/index.html.twig',
+            $rss ? 'default/main/index.rss.twig' : 'default/main/index.html.twig',
             [
                 'request' => $request,
                 'records' => $index->get(
@@ -46,7 +53,8 @@ class MainController extends AbstractController
                     $request->get('part') > 1 ? (int) $request->get('part') * $this->getParameter('app.main.index.limit') : 0,
                     $this->getParameter('app.main.index.limit')
                 )
-            ]
+            ],
+            $response
         );
     }
 
@@ -68,13 +76,20 @@ class MainController extends AbstractController
         ]
     )]
     public function namespace(
-        ?Request $request
+        ?Request $request,
+        ?Response $response
     ): Response
     {
         $index = new \Kvazar\Index\Manticore();
 
+        if ($rss = ('rss' == $request->get('feed')))
+        {
+            $response = new Response();
+            $response->headers->set('Content-Type', 'text/xml');
+        }
+
         return $this->render(
-            'default/main/namespace.html.twig',
+            $rss ? 'default/main/namespace.rss.twig' : 'default/main/namespace.html.twig',
             [
                 'request' => $request,
                 'records' => $index->get(
@@ -93,7 +108,8 @@ class MainController extends AbstractController
                 'title' => $this->_title(
                     $request->get('namespace')
                 )
-            ]
+            ],
+            $response
         );
     }
 

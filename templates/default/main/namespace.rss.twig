@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <atom:link href="{{ url('main_namespace',{'namespace':request.get('namespace')}) }}" rel="self" type="application/rss+xml"></atom:link>
+        <title>{{ app.name }}</title>
+        <link>{{ url('main_namespace',{'namespace':request.get('namespace')}) }}</link>
+        {% for record in records %}
+            <item>
+                <title>{{ record.key }}</title>
+                <author>{{ record.namespace }}</author>
+                <pubDate>{{ record.time | date('D, d M Y h:i:s O') }}</pubDate>
+                <guid>{{ url('main_transaction',{'transaction':record.transaction}) }}</guid>
+                <link>{{ url('main_transaction',{'transaction':record.transaction}) }}</link>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>
