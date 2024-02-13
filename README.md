@@ -6,6 +6,7 @@ This branch is modern replacement to [MySQL](https://github.com/kvazar-network/w
 
 ## Install
 
+* `apt install git composer manticore php-fpm php-curl php-mbstring php-pdo php-imagick`
 * `git clone https://github.com/kvazar-network/webapp.git`
 * `cd webapp`
 * `composer update`
