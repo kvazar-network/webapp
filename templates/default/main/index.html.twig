@@ -48,7 +48,7 @@
                     'part':request.get('part') - 1,
                     'search':request.get('search')
                 }
-            ) }}">{{ 'older' | trans }}</a>
+            ) }}">{{ 'newer' | trans }}</a>
             |
         {% endif %}
         <a rel="nofollow" href="{{
@@ -58,7 +58,7 @@
                     'part':(request.get('part') ? request.get('part') : 1) + 1,
                     'search':request.get('search')
                 }
-            ) }}">{{ 'newer' | trans }}</a>
+            ) }}">{{ 'older' | trans }}</a>
     </div>
     <div class="t-center px-16">
         <div class="pb-16 f-s-12">
