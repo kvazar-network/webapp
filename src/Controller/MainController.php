@@ -149,7 +149,7 @@ class MainController extends AbstractController
     {
         $index = new \Kvazar\Index\Manticore();
 
-        $title = $index->get(
+        $results = $index->get(
             '_KEVA_NS_',
             [
                 'crc32namespace' => crc32(
@@ -158,15 +158,17 @@ class MainController extends AbstractController
             ]
         );
 
-        if ($title)
+        if ($results)
         {
-            $title = reset(
-                $title
-            );
-
-            return trim(
-                $title['value']
-            );
+            foreach ($results as $result)
+            {
+                if ($result['key'] == '_KEVA_NS_')
+                {
+                    return trim(
+                        $result['value']
+                    );
+                }
+            }
         }
 
         return null;
