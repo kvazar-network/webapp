@@ -7,7 +7,7 @@ This branch is modern replacement to [MySQL](https://github.com/kvazar-network/w
 ## Instances
 
 * `http://[201:23b4:991a:634d:8359:4521:5576:15b7]/kvazar/` - [Yggdrasil](https://github.com/yggdrasil-network/)
-  * `http://kvazar.ygg` - [Alfis DNS](https://github.com/Revertron/Alfis) alias
+  * `http://kvazar.ygg` - [Alfis DNS](https://github.com/Revertron/Alfis)
 
 ## Install
 
