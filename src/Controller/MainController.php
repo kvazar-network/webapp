@@ -95,7 +95,7 @@ class MainController extends AbstractController
                 'records' => $index->get(
                     $request->get('search') ? (string) $request->get('search') : '',
                     [
-                        'crc32namespace' => crc32(
+                        'crc32_namespace' => crc32(
                             $request->get('namespace')
                         )
                     ],
@@ -134,7 +134,7 @@ class MainController extends AbstractController
         $records = $index->get(
             '',
             [
-                'crc32transaction' => crc32(
+                'crc32_transaction' => crc32(
                     $request->get('transaction')
                 )
             ]
@@ -168,7 +168,7 @@ class MainController extends AbstractController
         $results = $index->get(
             '_KEVA_NS_',
             [
-                'crc32namespace' => crc32(
+                'crc32_namespace' => crc32(
                     $namespace
                 )
             ]
