@@ -50,7 +50,7 @@ class MainController extends AbstractController
                     [
                         'time' => 'desc'
                     ],
-                    $request->get('part') > 1 ? (int) $request->get('part') * $this->getParameter('app.main.index.limit') : 0,
+                    $request->get('part') > 1 ? ((int) $request->get('part') - 1) * (int) $this->getParameter('app.main.index.limit') : 0,
                     $this->getParameter('app.main.index.limit')
                 )
             ],
