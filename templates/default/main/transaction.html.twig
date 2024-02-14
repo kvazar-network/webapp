@@ -23,12 +23,12 @@
     <div class="t-center px-16">
         <div class="mx-a mw-560 px-16">
             <div class="f-s-16 mb-16 of-a">
-                <a rel="nofollow" href="{{ path('main_transaction',{'transaction':record.transaction,'get':'key'}) }}">
+                <a rel="nofollow" href="{{ path('main_transaction',{'transaction':record.transaction,'get':'key'}) }}" class="c-1">
                     {{ record.key | format_type(record.type.key) }}
                 </a>
             </div>
             <div class="mb-20 of-a">
-                <a rel="nofollow" href="{{ path('main_transaction',{'transaction':record.transaction,'get':'value'}) }}">
+                <a rel="nofollow" href="{{ path('main_transaction',{'transaction':record.transaction,'get':'value'}) }}" class="c-1">
                     {{ record.value | format_type(record.type.value) | nl2br }}
                 </a>
             </div>
