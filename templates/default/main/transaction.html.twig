@@ -25,10 +25,10 @@
     <div class="t-center px-16">
         <div class="mx-a mw-560 px-16">
             <div class="f-s-16 mb-16 of-a">
-                {{ record.key }}
+                {{ record.key | format_type(record.type.key) }}
             </div>
             <div class="mb-20 of-a">
-                {{ record.value | nl2br }}
+                {{ record.value | format_type(record.type.value) }}
             </div>
             <div class="f-s-12">
                 {{ record.time | format_date }} {{ 'in' | trans }} {{ record.block }}

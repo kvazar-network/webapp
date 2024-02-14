@@ -6,7 +6,7 @@
         <link>{{ url('main_namespace',{'namespace':request.get('namespace')}) }}</link>
         {% for record in records %}
             <item>
-                <title>{{ record.key }}</title>
+                <title>{{ record.key | format_type(record.type.key) }}</title>
                 <author>{{ record.namespace }}</author>
                 <pubDate>{{ record.time | date('D, d M Y h:i:s O') }}</pubDate>
                 <guid>{{ url('main_transaction',{'transaction':record.transaction}) }}</guid>
