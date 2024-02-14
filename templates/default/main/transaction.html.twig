@@ -28,7 +28,7 @@
                 {{ record.key | format_type(record.type.key) }}
             </div>
             <div class="mb-20 of-a">
-                {{ record.value | format_type(record.type.value) }}
+                {{ record.value | format_type(record.type.value) | nl2br }}
             </div>
             <div class="f-s-12">
                 {{ record.time | format_date }} {{ 'in' | trans }} {{ record.block }}

@@ -92,9 +92,7 @@ class AppExtension extends AbstractExtension
 
             case \Kvazar\Index\Manticore::TYPE_STRING:
 
-                return nl2br(
-                    $value
-                );
+                return (string) $value;
 
             case \Kvazar\Index\Manticore::TYPE_BIN:
 
