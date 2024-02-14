@@ -34,7 +34,7 @@ class MainController extends AbstractController
     {
         $index = new \Kvazar\Index\Manticore();
 
-        if ($rss = ('rss' == $request->get('feed')))
+        if ($rss = ('rss' == $request->get('mode')))
         {
             $response = new Response();
             $response->headers->set('Content-Type', 'text/xml');
@@ -82,7 +82,7 @@ class MainController extends AbstractController
     {
         $index = new \Kvazar\Index\Manticore();
 
-        if ($rss = ('rss' == $request->get('feed')))
+        if ($rss = ('rss' == $request->get('mode')))
         {
             $response = new Response();
             $response->headers->set('Content-Type', 'text/xml');
