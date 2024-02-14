@@ -139,13 +139,68 @@ class MainController extends AbstractController
         {
             if ($record['transaction'] === $request->get('transaction'))
             {
-                return $this->render(
-                    'default/main/transaction.html.twig',
-                    [
-                        'request' => $request,
-                        'record'  => $record
-                    ]
-                );
+                switch ($request->get('get'))
+                {
+                    case 'key':
+
+                        $response = new Response();
+
+                        $response->headers->set(
+                            'Content-length',
+                            strlen(
+                                $record['key']
+                            )
+                        );
+
+                        $response->headers->set(
+                            'Content-Disposition',
+                            sprintf(
+                                'attachment; filename="%s.key";',
+                                $request->get('transaction')
+                            )
+                        );
+
+                        $response->sendHeaders();
+
+                        return $response->setContent(
+                            $record['key']
+                        );
+
+                    case 'value':
+
+                        $response = new Response();
+
+                        $response->headers->set(
+                            'Content-length',
+                            strlen(
+                                $record['value']
+                            )
+                        );
+
+                        $response->headers->set(
+                            'Content-Disposition',
+                            sprintf(
+                                'attachment; filename="%s.value";',
+                                $request->get('transaction')
+                            )
+                        );
+
+                        $response->sendHeaders();
+
+                        return $response->setContent(
+                            $record['value']
+                        );
+
+                    default:
+
+                        return $this->render(
+                            'default/main/transaction.html.twig',
+                            [
+                                'request' => $request,
+                                'record'  => $record
+                            ]
+                        );
+                }
             }
         }
 
