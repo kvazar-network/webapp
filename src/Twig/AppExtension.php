@@ -24,6 +24,13 @@ class AppExtension extends AbstractExtension
                     $this,
                     'formatType'
                 ]
+            ),
+            new TwigFilter(
+                'namespace_title',
+                [
+                    $this,
+                    'namespaceTitle'
+                ]
             )
         ];
     }
@@ -121,5 +128,36 @@ class AppExtension extends AbstractExtension
             default:
                 return '[undefined]';
         }
+    }
+
+    public function namespaceTitle(
+        string $namespace
+    ): string
+    {
+        $index = new \Kvazar\Index\Manticore();
+
+        $results = $index->get(
+            '_KEVA_NS_',
+            [
+                'crc32_namespace' => crc32(
+                    $namespace
+                )
+            ]
+        );
+
+        if ($results)
+        {
+            foreach ($results as $result)
+            {
+                if ($result['key'] == '_KEVA_NS_')
+                {
+                    return trim(
+                        $result['value']
+                    );
+                }
+            }
+        }
+
+        return $namespace;
     }
 }

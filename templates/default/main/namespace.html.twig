@@ -1,5 +1,5 @@
 {% extends 'default/layout.html.twig' %}
-{% block title %}{% if title %}{{ title }} - {% endif %}{% if request.get('part') > 1 %}{{ 'Part' | trans | upper }} {{ request.get('part') }} - {% endif %}{{ app.name }}{% endblock %}
+{% block title %}{{ request.get('namespace') | namespace_title }} - {% if request.get('part') > 1 %}{{ 'Part' | trans | upper }} {{ request.get('part') }} - {% endif %}{{ app.name }}{% endblock %}
 {% block favicon %}<link rel="icon" href="{{ request.get('namespace') | jIdenticon }}" />{% endblock %}
 {% block body %}
     <div class="t-center px-16 pt-54">
@@ -10,11 +10,9 @@
             <div class="mx-a mw-560 px-16 pb-16">
                 <img class="br-50 shine" src="{{ request.get('namespace') | jIdenticon }}" alt="{{ request.get('namespace') }}" />
             </div>
-            {% if title %}
-                <div class="mb-36 c-1">
-                    {{ title }}
-                </div>
-            {% endif %}
+            <div class="mb-36 c-1">
+                {{ request.get('namespace') | namespace_title }}
+            </div>
         </div>
     </div>
     <div class="t-center px-16 pb-36">

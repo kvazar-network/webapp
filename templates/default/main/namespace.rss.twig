@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <atom:link href="{{ url('main_namespace',{'namespace':request.get('namespace')}) }}" rel="self" type="application/rss+xml"></atom:link>
-        <title>{{ app.name }}</title>
+        <title>{{ request.get('namespace') | namespace_title }} - {{ app.name }}</title>
         <link>{{ url('main_namespace',{'namespace':request.get('namespace')}) }}</link>
         {% for record in records %}
             <item>
