@@ -128,30 +128,27 @@ class MainController extends AbstractController
     {
         $index = new \Kvazar\Index\Manticore();
 
-        $records = $index->get(
+        foreach ($index->get(
             '',
             [
                 'crc32_transaction' => crc32(
                     $request->get('transaction')
                 )
             ]
-        );
-
-        if (empty($records))
+        ) as $record)
         {
-            throw $this->createNotFoundException();
+            if ($record['transaction'] === $request->get('transaction'))
+            {
+                return $this->render(
+                    'default/main/transaction.html.twig',
+                    [
+                        'request' => $request,
+                        'record'  => $record
+                    ]
+                );
+            }
         }
 
-        $record = reset(
-            $records
-        );
-
-        return $this->render(
-            'default/main/transaction.html.twig',
-            [
-                'request' => $request,
-                'record'  => $record
-            ]
-        );
+        throw $this->createNotFoundException();
     }
 }
