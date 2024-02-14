@@ -149,7 +149,7 @@ class AppExtension extends AbstractExtension
         {
             foreach ($results as $result)
             {
-                if ($result['key'] == '_KEVA_NS_')
+                if ($result['key'] == '_KEVA_NS_' && !empty($result['value']))
                 {
                     return trim(
                         $result['value']
