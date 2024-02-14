@@ -41,7 +41,7 @@
         </div>
     {% endfor %}
     <div class="t-center pt-16 pb-27">
-        {% if request.get('part') %}
+        {% if request.get('part') > 1 %}
             <a rel="nofollow" href="{{
             path(
                 'main_namespace',
