@@ -118,7 +118,7 @@ class AppExtension extends AbstractExtension
 
             case \Kvazar\Index\Manticore::TYPE_OBJECT:
 
-                return '[array]';
+                return '[object]';
 
             default:
                 return '[undefined]';
