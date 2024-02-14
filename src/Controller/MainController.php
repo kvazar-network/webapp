@@ -111,11 +111,15 @@ class MainController extends AbstractController
     }
 
     #[Route(
-        '/{transaction}',
+        '/{transaction}/{get}',
         name: 'main_transaction',
         requirements:
         [
             'transaction' => '^[A-f0-9]{64}$',
+        ],
+        defaults:
+        [
+            'get' => null,
         ],
         methods:
         [
