@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}{{ app.name }}{% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="{{ url('main_index') }}css/{{ app.theme }}.css?{{ app.version }}" />
+        <link rel="stylesheet" type="text/css" href="{{ path('main_index') }}css/{{ app.theme }}.css?{{ app.version }}" />
         {% block favicon %}{% endblock %}
     </head>
     <body>
